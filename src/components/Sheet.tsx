@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useEffect, useRef, useState } from 'react';
-import { CellClickArgs, CellMouseEvent, Column, DataGrid, textEditor } from 'react-data-grid';
+import { CellClickArgs, Column, DataGrid, textEditor } from 'react-data-grid';
 import 'react-data-grid/lib/styles.css';
 
 interface Row {
@@ -86,7 +86,7 @@ const Spreadsheet: React.FC<GridProps> = ({ rowCount, columnCount }) => {
     setRows(updatedRows);
   };
 
-  const onCellClick = (args: CellClickArgs<Row, unknown>, event: CellMouseEvent) => {
+  const onCellClick = (args: CellClickArgs<Row, unknown>) => {
     setActiveCell({ row: args.row.id, col: parseInt(args.column.key) });
     const formula = formulaMap.get(`${args.row.id},${args.column.key}`)?.formula;
     if (formula) {
